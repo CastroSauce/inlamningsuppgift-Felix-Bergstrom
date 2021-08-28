@@ -1,4 +1,5 @@
 ﻿using inlämningsuppgift.Models;
+using inlämningsuppgift.Services.Catagory;
 using inlämningsuppgift.Services.Product;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -12,32 +13,35 @@ using System.Threading.Tasks;
 namespace inlämningsuppgift.Pages
 {
 
-    public class ProductModel
-    {
-        public string name { get; set; }
-        public string description { get; set; }
-        public string price { get; set; }
-    }
+
 
 
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
         private IProductService _ProductService { get; set; }
+        private ICatagoryService _CatagoryService { get; set; }
 
-        public List<ProductModel> productList { get; set; }
+        public List<ProductViewModel> productList { get; set; }
+        public List<CatagoryViewModel> catagoryList { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger, IProductService ProductService)
+        public IndexModel(ILogger<IndexModel> logger, IProductService ProductService, ICatagoryService CatagoryService)
         {
             _logger = logger;
             _ProductService = ProductService;
+            _CatagoryService = CatagoryService;
         }
 
-        public async void OnGet()
+        public async Task OnGet()
         {
-            var products = await _ProductService.GetAllProducts();
+            productList = await _ProductService.GetAllProductsAsync();
 
+            catagoryList = await _CatagoryService.GetAllCatagoriesAsync();
 
         }
+
+
+
+
     }
 }

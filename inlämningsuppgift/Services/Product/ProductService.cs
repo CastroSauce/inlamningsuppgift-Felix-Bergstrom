@@ -17,9 +17,9 @@ namespace inlämningsuppgift.Services.Product
         }
 
 
-        public async Task<List<Models.Product>> GetAllProducts()
+        public async Task<List<ProductViewModel>> GetAllProductsAsync()
         {
-            return await _dbContext.products.Include(product => product.catagory).AsNoTracking().ToListAsync();
+            return await _dbContext.products.AsNoTracking().Select(product => new ProductViewModel { Name = product.Name, description = product.description, Id = product.Id, price = product.price }).ToListAsync();
         }
     }
 }

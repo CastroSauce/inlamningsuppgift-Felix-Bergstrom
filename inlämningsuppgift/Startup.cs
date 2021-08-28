@@ -1,4 +1,5 @@
 using inlämningsuppgift.Models;
+using inlämningsuppgift.Services.Catagory;
 using inlämningsuppgift.Services.Product;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,9 +27,12 @@ namespace inlämningsuppgift
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IProductService, ProductService>();
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
+            
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICatagoryService, CatagoryService>();
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")).EnableSensitiveDataLogging());
             services.AddRazorPages();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

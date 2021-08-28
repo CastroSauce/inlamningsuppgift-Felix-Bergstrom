@@ -5,21 +5,17 @@ using System.Threading.Tasks;
 
 namespace inlämningsuppgift.Models
 {
-    public class Product
+    public class ProductViewModel
     {
-        public int Id { get; set; }
 
+        public int Id { get; set; }
         public string Name { get; set; }
 
         public float price { get; set; }
 
         public string description { get; set; }
 
-        public Catagory catagory{ get; set; }
-
         public Countries location { get; set; }
-
-
 
     }
 }

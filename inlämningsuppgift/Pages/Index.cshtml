@@ -4,7 +4,31 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div>
+    <div class="row justify-content-around m-3 ">
+        @foreach (var catagory in Model.catagoryList)
+        {
+            <partial name="/Pages/IndexView/Partials/_CatagoryPartial.cshtml" model="@catagory" />
+        }
+    </div>
+
+    <div class="row">
+        <div class="col-3 d-flex flex-column">
+       
+        </div>
+
+
+        <div class="col-9 d-flex flex-column product-container">
+            @foreach (var product in Model.productList)
+            {
+                <partial name="/Pages/IndexView/Partials/_ProductPartial.cshtml" model="@product" />
+            }
+        </div>
+    </div>
+
 </div>
+
+
+
+
+<link href="/css/Index/Index.css" rel="stylesheet" />
