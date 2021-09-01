@@ -4,27 +4,41 @@
     ViewData["Title"] = "Home page";
 }
 
-<div>
-    <div class="row justify-content-around m-3 ">
-        @foreach (var catagory in Model.catagoryList)
-        {
-            <partial name="/Pages/IndexView/Partials/_CatagoryPartial.cshtml" model="@catagory" />
-        }
-    </div>
 
-    <div class="row">
-        <div class="col-3 d-flex flex-column">
-       
-        </div>
+<div class="hero">
 
 
-        <div class="col-9 d-flex flex-column product-container">
-            @foreach (var product in Model.productList)
+
+</div>
+
+
+
+
+
+
+<div >
+
+    <section class="catagory-section p-3">
+        <div class="catagory-container">
+
+            @foreach (var catagory in Model.catagoryList)
             {
-                <partial name="/Pages/IndexView/Partials/_ProductPartial.cshtml" model="@product" />
+                <partial name="/Pages/IndexView/Partials/_CatagoryPartial.cshtml" model="@catagory" />
             }
         </div>
-    </div>
+
+        <div class="d-flex justify-content-center">
+            <a class="border-bottom">Tours</a>
+        </div>
+    </section>
+
+    <section>
+                @foreach (var product in Model.productList)
+                {
+                <partial name="/Pages/IndexView/Partials/_ProductPartial.cshtml" model="@product" />
+                }
+
+    </section>
 
 </div>
 

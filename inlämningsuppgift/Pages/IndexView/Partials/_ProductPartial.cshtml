@@ -1,22 +1,28 @@
-﻿
-@model inlämningsuppgift.Models.ProductViewModel
+﻿@model inlämningsuppgift.Models.ProductViewModel
 
 
+<div class="product d-flex flex-sm-column flex-md-row border no-gutters p-0 mb-5">
 
-<div class="product position-relative pt-4 pb-4 pl-3 ">
-    <img class="product-background" src="https://wallpaperaccess.com/full/1493555.jpg" alt="Alternate Text" />
+    <div class="price">
+        <span>@Model.price</span>
+    </div>
 
-    <div class="text-white">
-        <h2>@Model.Name</h2>
-        <p>Communism is pretty nice nowadays dont you think?</p>
-
+    <div class="col-sm-12 col-md-6 sideImage">
+        <img class="image-fit" src="https://malta.se/wp-content/uploads/2019/09/Bla-lagunen-Blue-Lagoon-Malta-800x533px.jpg" alt="Alternate Text" />
     </div>
 
 
-        <a href="#" class="btn btn-primary form-control col-2">Order</a>
-        <a href="#" data-toggle="collapse" data-target="#collapse_@Model.Id" class="btn btn-info form-control col-2">More info</a>
+    <div class="col-sm-12 col-md-6 overview">
+        <h5 class="title"><a>@Model.Name</a></h5>
+        <p class="location"><img class="icon" src="~/icons/pin.png" alt="Alternate Text" /> @Model.location</p>
+        <p class="description">@Model.description</p>
 
-        <div class="text-white pt-3 collapse" id="collapse_@Model.Id">
-            <p>@Model.description</p>
-        </div>
+        <a class="btn btn-primary" href="#">content</a>
+    </div>
+
+
+
 </div>
+
+
+<link href="~/css/product.css" rel="stylesheet" />

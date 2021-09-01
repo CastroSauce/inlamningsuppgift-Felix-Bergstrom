@@ -1,0 +1,32 @@
+﻿
+@model inlämningsuppgift.Models.ProductViewModel
+
+
+
+<div class="product position-relative pt-4 pb-4 pl-3 ">
+    <img class="product-background" src="https://wallpaperaccess.com/full/1493555.jpg" alt="Alternate Text" />
+
+    <div class="text-white">
+        <div class="d-flex justify-content-between">
+        <h2>@Model.Name</h2>
+        
+        <div class="d-flex">
+            <p class="mr-2">Location: <strong>@Model.location</strong></p>
+            <p>Price: <strong>@Model.price</strong></p>
+        </div>
+        </div>
+
+
+        <p>Communism is pretty nice nowadays dont you think?</p>
+
+
+    </div>
+
+
+        <a href="#" class="btn btn-primary form-control col-2">Order</a>
+        <a href="#" data-toggle="collapse" data-target="#collapse_@Model.Id" class="btn btn-info form-control col-2">More info</a>
+
+        <div class="text-white pt-3 collapse" id="collapse_@Model.Id">
+            <p>@Model.description</p>
+        </div>
+</div>

@@ -19,6 +19,10 @@ namespace inlämningsuppgift.Services.Catagory
 
         public async Task<List<CatagoryViewModel>> GetAllCatagoriesAsync()
         {
+
+            
+
+
             return await _dbContext.catagories.AsNoTracking().Select(Catagory => new CatagoryViewModel { Name = Catagory.Name, Id = Catagory.Id }).ToListAsync();
         }
     }

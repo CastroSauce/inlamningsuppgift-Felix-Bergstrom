@@ -22,17 +22,17 @@ namespace inlämningsuppgift.Models
         private static void seedCatagories(ApplicationDbContext dbContext)
         {
 
-            if(!dbContext.catagories.Any(x => x.Name == "Flights"))
-                dbContext.Add(new Catagory { Name = "Flights" });
+            if(!dbContext.catagories.Any(x => x.Name == "Balloon flights"))
+                dbContext.Add(new Catagory { Name = "Balloon flights" });
 
-            if (!dbContext.catagories.Any(x => x.Name == "Train"))
-                dbContext.Add(new Catagory { Name = "Train" });
+            if (!dbContext.catagories.Any(x => x.Name == "Train adventures"))
+                dbContext.Add(new Catagory { Name = "Train adventures" });
 
-            if (!dbContext.catagories.Any(x => x.Name == "Boat"))
-                dbContext.Add(new Catagory { Name = "Boat" });
+            if (!dbContext.catagories.Any(x => x.Name == "Sailing trips"))
+                dbContext.Add(new Catagory { Name = "Sailing trips" });
 
-            if (!dbContext.catagories.Any(x => x.Name == "Biking"))
-                dbContext.Add(new Catagory { Name = "Biking" });
+            if (!dbContext.catagories.Any(x => x.Name == "Biking experiences"))
+                dbContext.Add(new Catagory { Name = "Biking experiences" });
 
             dbContext.SaveChanges();
         }
@@ -41,10 +41,10 @@ namespace inlämningsuppgift.Models
 
         private static void seedProducts(ApplicationDbContext dbContext)
         {
-            var bycleTrip = dbContext.catagories.First(x => x.Name == "Biking");
-            var airtrip = dbContext.catagories.First(x => x.Name == "Flights");
-            var trainTrip = dbContext.catagories.First(x => x.Name == "Train");
-            var boattrip = dbContext.catagories.First(x => x.Name == "Boat");
+            var bycleTrip = dbContext.catagories.First(x => x.Name == "Biking experiences");
+            var airtrip = dbContext.catagories.First(x => x.Name == "Balloon flights");
+            var trainTrip = dbContext.catagories.First(x => x.Name == "Train adventures");
+            var boattrip = dbContext.catagories.First(x => x.Name == "Sailing trips");
 
 
             if (!dbContext.products.Any(x => x.Name == "The Friendship Highway"))

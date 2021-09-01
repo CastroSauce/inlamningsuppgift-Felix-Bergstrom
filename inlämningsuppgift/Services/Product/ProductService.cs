@@ -19,7 +19,7 @@ namespace inlämningsuppgift.Services.Product
 
         public async Task<List<ProductViewModel>> GetAllProductsAsync()
         {
-            return await _dbContext.products.AsNoTracking().Select(product => new ProductViewModel { Name = product.Name, description = product.description, Id = product.Id, price = product.price }).ToListAsync();
+            return await _dbContext.products.AsNoTracking().Select(product => new ProductViewModel {location = product.location, Name = product.Name, description = product.description, Id = product.Id, price = product.price }).ToListAsync();
         }
     }
 }
