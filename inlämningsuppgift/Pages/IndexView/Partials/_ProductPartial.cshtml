@@ -1,28 +1,21 @@
 ﻿@model inlämningsuppgift.Models.ProductViewModel
 
 
-<div class="product d-flex flex-sm-column flex-md-row border no-gutters p-0 mb-5">
-
-    <div class="price">
-        <span>@Model.price</span>
-    </div>
-
-    <div class="col-sm-12 col-md-6 sideImage">
-        <img class="image-fit" src="https://malta.se/wp-content/uploads/2019/09/Bla-lagunen-Blue-Lagoon-Malta-800x533px.jpg" alt="Alternate Text" />
-    </div>
-
-
-    <div class="col-sm-12 col-md-6 overview">
-        <h5 class="title"><a>@Model.Name</a></h5>
-        <p class="location"><img class="icon" src="~/icons/pin.png" alt="Alternate Text" /> @Model.location</p>
-        <p class="description">@Model.description</p>
-
-        <a class="btn btn-primary" href="#">content</a>
-    </div>
-
-
-
+<div class="col-sm-6 col-md-12 wow fadeInRight">
+    <!-- Product Big-->
+    <article class="product-big">
+        <div class="unit flex-column flex-md-row align-items-md-stretch">
+            <div class="unit-left"><a class="product-big-figure" href="#"><img src="images/product-big-1-600x366.jpg" alt="" width="600" height="366" /></a></div>
+            <div class="unit-body">
+                <div class="product-big-body">
+                    <h5 class="product-big-title"><a href="#">@Model.Name,<img class="icon" src="~/icons/pin.png" /> @Model.location</a></h5>
+                    <div class="group-sm group-middle justify-content-start">
+                        <div class="product-big-rating"><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star_half"></span></div><a class="product-big-reviews" href="#">4 customer reviews</a>
+                    </div>
+                    <p class="product-big-text">@Model.description</p><a class="button button-black-outline button-ujarak" href="#">Buy This Tour</a>
+                    <div class="product-big-price-wrap"><span class="product-big-price">@Model.price</span></div>
+                </div>
+            </div>
+        </div>
+    </article>
 </div>
-
-
-<link href="~/css/product.css" rel="stylesheet" />

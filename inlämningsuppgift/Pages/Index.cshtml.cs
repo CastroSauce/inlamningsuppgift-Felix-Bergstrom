@@ -22,11 +22,15 @@ namespace inlämningsuppgift.Pages
         private IProductService _ProductService { get; set; }
         private ICatagoryService _CatagoryService { get; set; }
 
+
+
+
+
         public List<ProductViewModel> productList { get; set; }
         public List<CatagoryViewModel> catagoryList { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger, IProductService ProductService, ICatagoryService CatagoryService)
-        {
+        {  
             _logger = logger;
             _ProductService = ProductService;
             _CatagoryService = CatagoryService;
@@ -37,7 +41,6 @@ namespace inlämningsuppgift.Pages
             productList = await _ProductService.GetAllProductsAsync();
 
             catagoryList = await _CatagoryService.GetAllCatagoriesAsync();
-
         }
 
 

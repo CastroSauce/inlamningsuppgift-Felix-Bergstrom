@@ -30,7 +30,7 @@ namespace inlämningsuppgift
             
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICatagoryService, CatagoryService>();
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")).EnableSensitiveDataLogging());
+            services.AddDbContext<ApplicationDbContext>();
             services.AddRazorPages();
             
         }

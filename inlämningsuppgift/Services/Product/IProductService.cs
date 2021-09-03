@@ -7,7 +7,7 @@ namespace inlämningsuppgift.Services.Product
 {
    public interface IProductService
     {
-       abstract public Task<List<Models.ProductViewModel>> GetAllProductsAsync();
+       abstract public Task<List<ProductViewModel>> GetAllProductsAsync();
 
 
     }
