@@ -19,11 +19,14 @@ namespace inlämningsuppgift.Services.Catagory
 
         public async Task<List<CatagoryViewModel>> GetAllCatagoriesAsync()
         {
-
-            
-
-
-            return await _dbContext.catagories.AsNoTracking().Select(Catagory => new CatagoryViewModel { Name = Catagory.Name, Id = Catagory.Id }).ToListAsync();
+            return await _dbContext.catagories.AsNoTracking().Include(Catagory => Catagory.image).Select(Catagory => new CatagoryViewModel {image = Catagory.image, Name = Catagory.Name, Id = Catagory.Id }).ToListAsync();
+        }    
+        
+        public async Task<List<CatagoryViewModel>> GetAllOnHomepage()
+        {
+            return await _dbContext.catagories.AsNoTracking().Include(Catagory => Catagory.image)
+                .Where(Catagory => Catagory.onHomepage == true)
+                .Select(Catagory => new CatagoryViewModel {image = Catagory.image, Name = Catagory.Name, Id = Catagory.Id }).ToListAsync();
         }
     }
 }

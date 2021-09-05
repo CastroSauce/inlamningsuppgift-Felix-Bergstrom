@@ -1,5 +1,7 @@
 using inlämningsuppgift.Models;
+using inlämningsuppgift.Services;
 using inlämningsuppgift.Services.Catagory;
+using inlämningsuppgift.Services.image;
 using inlämningsuppgift.Services.Product;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,6 +31,7 @@ namespace inlämningsuppgift
         {
             
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IImageService, imageService>();
             services.AddScoped<ICatagoryService, CatagoryService>();
             services.AddDbContext<ApplicationDbContext>();
             services.AddRazorPages();

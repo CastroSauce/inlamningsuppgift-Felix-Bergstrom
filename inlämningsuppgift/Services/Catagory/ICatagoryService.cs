@@ -9,5 +9,7 @@ namespace inlämningsuppgift.Services.Catagory
     {
         abstract public Task<List<Models.CatagoryViewModel>> GetAllCatagoriesAsync();
 
+        abstract public Task<List<Models.CatagoryViewModel>> GetAllOnHomepage();
+
     }
 }

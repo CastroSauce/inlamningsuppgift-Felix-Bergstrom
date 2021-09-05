@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using inlämningsuppgift.Models;
 
 namespace inlämningsuppgift.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210903132041_changed image url name")]
+    partial class changedimageurlname
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -232,9 +234,6 @@ namespace inlämningsuppgift.Migrations
                     b.Property<int?>("imageId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("onHomepage")
-                        .HasColumnType("bit");
-
                     b.HasKey("Id");
 
                     b.HasIndex("imageId");
@@ -263,9 +262,6 @@ namespace inlämningsuppgift.Migrations
 
                     b.Property<int>("location")
                         .HasColumnType("int");
-
-                    b.Property<bool>("onHomepage")
-                        .HasColumnType("bit");
 
                     b.Property<float>("price")
                         .HasColumnType("real");

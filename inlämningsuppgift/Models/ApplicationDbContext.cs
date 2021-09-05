@@ -14,6 +14,7 @@ namespace inlämningsuppgift.Models
 
         public DbSet<Product> products { get; set; }
         public DbSet<Catagory> catagories { get; set; }
+        public DbSet<image> images { get; set; }
 
     }
 }

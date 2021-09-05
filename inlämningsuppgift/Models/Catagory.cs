@@ -9,6 +9,9 @@ namespace inlämningsuppgift.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
- 
+
+        public bool onHomepage { get; set; } = false;
+        public image image { get; set; }
+
     }
 }

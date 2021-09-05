@@ -1,0 +1,22 @@
+﻿@page
+@model inlämningsuppgift.Pages.CatagoryPage.CatagoryModel
+
+
+
+<!-- Section Box Categories-->
+<section class="section section-lg section-top-1 bg-gray-4">
+    <div class="container">
+        <div class="box-categories cta-box-wrap pt-5">
+            <div class="box-categories-content">
+                <div class="row justify-content-center grid-gap-40">
+
+                    @foreach (var catagory in Model.catagories)
+                    {
+                        <partial name="../Shared/_CatagoryPartial.cshtml" model="catagory" />
+                    }
+
+
+                </div>
+            </div>
+    </div>
+</section>

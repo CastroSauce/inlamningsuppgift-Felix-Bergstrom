@@ -8,7 +8,7 @@
 <!-- Swiper-->
 <section class="section swiper-container swiper-slider swiper-slider-corporate swiper-pagination-style-2" data-loop="true" data-autoplay="5000" data-simulate-touch="true" data-nav="false" data-direction="vertical">
     <div class="swiper-wrapper text-left">
-        <div class="swiper-slide context-dark" data-slide-bg="images/slider-4-slide-1-1920x678.jpg">
+        <div class="swiper-slide context-dark" data-slide-bg="images/homepageHero/hero1.jpg">
             <div class="swiper-slide-caption section-md">
                 <div class="container">
                     <div class="row">
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="swiper-slide context-dark" data-slide-bg="images/slider-4-slide-2-1920x678.jpg">
+        <div class="swiper-slide context-dark" data-slide-bg="images/homepageHero/hero2.jpg">
             <div class="swiper-slide-caption section-md">
                 <div class="container">
                     <div class="row">
@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div class="swiper-slide context-dark" data-slide-bg="images/slider-4-slide-3-1920x678.jpg">
+        <div class="swiper-slide context-dark" data-slide-bg="images/homepageHero/hero3.jpg">
             <div class="swiper-slide-caption section-md">
                 <div class="container">
                     <div class="row">
@@ -58,13 +58,13 @@
 
                     @foreach (var catagory in Model.catagoryList)
                     {
-                        <partial name="IndexView/Partials/_CatagoryPartial.cshtml" model="catagory" />
+                        <partial name="Shared/_CatagoryPartial.cshtml" model="catagory" />
                     }
 
 
                 </div>
             </div>
-        </div><a class="link-classic wow fadeInUp" href="#">Other Tours<span></span></a>
+        </div><a class="link-classic wow fadeInUp" asp-page="/CatagoryPage/Catagory">Other Catagories<span></span></a>
         <!-- Owl Carousel-->
     </div>
 </section>
@@ -78,11 +78,13 @@
 
             @foreach (var product in Model.productList)
             {
-                <partial name="IndexView/Partials/_ProductPartial.cshtml" model="product" />
+                <partial name="Shared/_ProductPartial.cshtml" model="product" />
             }
 
         </div>
     </div>
+
+    <a class="button button-black-outline button-ujarak" href="#">More tours</a>
 </section>
 
 

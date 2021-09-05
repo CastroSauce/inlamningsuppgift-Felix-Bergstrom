@@ -15,6 +15,8 @@ namespace inlämningsuppgift.Models
 
         public string description { get; set; }
 
+        public image image { get; set; }
+
         public Countries location { get; set; }
 
     }

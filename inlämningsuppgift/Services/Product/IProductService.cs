@@ -8,6 +8,8 @@ namespace inlämningsuppgift.Services.Product
    public interface IProductService
     {
        abstract public Task<List<ProductViewModel>> GetAllProductsAsync();
+       abstract public Task<List<ProductViewModel>> GetAllOnHomepage();
+       abstract public Task<List<ProductViewModel>> GetSpecificProducts(int? id, string? query);
 
 
     }

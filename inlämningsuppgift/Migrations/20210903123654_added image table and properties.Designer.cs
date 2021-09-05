@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using inlämningsuppgift.Models;
 
 namespace inlämningsuppgift.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210903123654_added image table and properties")]
+    partial class addedimagetableandproperties
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -232,9 +234,6 @@ namespace inlämningsuppgift.Migrations
                     b.Property<int?>("imageId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("onHomepage")
-                        .HasColumnType("bit");
-
                     b.HasKey("Id");
 
                     b.HasIndex("imageId");
@@ -264,9 +263,6 @@ namespace inlämningsuppgift.Migrations
                     b.Property<int>("location")
                         .HasColumnType("int");
 
-                    b.Property<bool>("onHomepage")
-                        .HasColumnType("bit");
-
                     b.Property<float>("price")
                         .HasColumnType("real");
 
@@ -290,7 +286,7 @@ namespace inlämningsuppgift.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("url")
+                    b.Property<string>("imageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

@@ -19,7 +19,25 @@ namespace inlämningsuppgift.Services.Product
 
         public async Task<List<ProductViewModel>> GetAllProductsAsync()
         {
-            return await _dbContext.products.AsNoTracking().Select(product => new ProductViewModel {location = product.location, Name = product.Name, description = product.description, Id = product.Id, price = product.price }).ToListAsync();
+            return await _dbContext.products.AsNoTracking().Include(product => product.image).Select(product => new ProductViewModel {image = product.image, location = product.location, Name = product.Name, description = product.description, Id = product.Id, price = product.price }).ToListAsync();
+        }
+
+        public async Task<List<ProductViewModel>> GetAllOnHomepage()
+        {
+            return await _dbContext.products.AsNoTracking().Include(product => product.image)
+                .Where(product => product.onHomepage == true)
+                .Select(product => new ProductViewModel { image = product.image, location = product.location, Name = product.Name, description = product.description, Id = product.Id, price = product.price }).ToListAsync();
+        }
+
+        public async Task<List<ProductViewModel>> GetSpecificProducts(int? catagoryId, string? query)
+        {
+            var request = _dbContext.products.AsNoTracking();
+
+            if(catagoryId != null) {request = request.Where(product => product.catagory.Id == catagoryId); }
+
+            if (query != null) { request = request.Where(product => product.Name.Contains(query) ); }; 
+
+            return await request.Select(product => new ProductViewModel { image = product.image, location = product.location, Name = product.Name, description = product.description, Id = product.Id, price = product.price }).ToListAsync();
         }
     }
 }

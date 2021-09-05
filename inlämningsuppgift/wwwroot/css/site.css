@@ -5,6 +5,10 @@ for details on configuring this project to bundle and minify static web assets. 
     --main-dark-color: #162e44;
 }
 
+.grid-gap-40{
+    grid-gap:40px !important;
+}
+
 .ie-panel {
     display: none;
     background: #212121;
@@ -99,10 +103,7 @@ html {
     min-height: 100%;
 }
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
+
 .footer {
   position: absolute;
   bottom: 0;
