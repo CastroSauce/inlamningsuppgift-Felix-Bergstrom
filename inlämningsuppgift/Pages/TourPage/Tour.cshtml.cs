@@ -24,7 +24,7 @@ namespace inlämningsuppgift.Pages.TourPage
 
         public async Task OnGet(int? catagoryId, string? query)
         {
-            products = await _productService.GetSpecificProducts(catagoryId, query);
+            products = await _productService.GetSpecificProductsAsync(catagoryId, query);
 
         }
     }

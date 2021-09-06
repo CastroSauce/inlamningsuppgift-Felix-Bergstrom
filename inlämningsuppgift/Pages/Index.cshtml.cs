@@ -38,7 +38,7 @@ namespace inlämningsuppgift.Pages
 
         public async Task OnGet()
         {
-            productList = await _ProductService.GetAllOnHomepage();
+            productList = await _ProductService.GetAllOnHomepageAsync();
 
             catagoryList = await _CatagoryService.GetAllOnHomepage();
         }

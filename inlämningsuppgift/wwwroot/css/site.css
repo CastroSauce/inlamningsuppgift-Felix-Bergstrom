@@ -37,8 +37,29 @@ html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {
     height: 100%;
 }
 
+.btn-primary:hover {
+    background-color: #207ad4 !important;
+    border: 1px solid #207ad4 !important;
+}
+
+.btn-green {
+    background-color: var(--main-green-color) !important;
+    border: 1px solid var(--main-green-color) !important;
+    color:white;
+}
+
+    .btn-green:hover {
+        background-color: #04c7ba !important;
+        border: 1px solid var(--main-green-color) !important;
+    }
+
 .bg-blue{
     background-color: var(--main-dark-color);
+}
+
+.bg-main-green{
+    background-color: var(--main-green-color) !important;
+    border: 1px solid var(--main-green-color) !important;
 }
 
 

@@ -3,8 +3,15 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
+
+@{ 
+    var signedin = SignInManager.IsSignedIn(User);
+}
+
+
+
 <ul class=" d-flex">
-@if (SignInManager.IsSignedIn(User))
+@if (signedin)
 {
     <li class="nav-item ">
         <a id="manage" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>

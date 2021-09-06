@@ -1,5 +1,6 @@
 using inlämningsuppgift.Models;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,7 +22,8 @@ namespace inlämningsuppgift
             {
                 var serviceProvider = scope.ServiceProvider;
                 var dbContext = serviceProvider.GetRequiredService<ApplicationDbContext>();
-                DataInitilizer.seed(dbContext);
+                var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+                DataInitilizer.seed(dbContext, userManager);
             }
             builder.Run();
         }

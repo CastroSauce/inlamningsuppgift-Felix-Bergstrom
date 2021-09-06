@@ -1,0 +1,47 @@
+﻿
+
+
+.Login-container{
+
+    max-width:400px;
+ 
+}
+
+    .Login-input {
+        border: none;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        border-radius: 0px;
+    }
+
+        .Login-input:focus {
+            box-shadow: none;
+            border-color: var(--main-green-color);
+        }
+
+
+.Login-title {
+
+    margin-top: 0;
+    margin-bottom:20px;
+    font-weight: 600;
+    color: rgb(104, 107, 105);
+}
+
+.remember {
+    font-size: 14px;
+    font-weight:400;
+    letter-spacing: .025em;
+    color: #9b9b9b;
+    cursor: pointer;
+    text-align: start;
+}
+
+.forgot-password {
+    text-align: right;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: .025em;
+    color: #9b9b9b;
+    cursor: pointer;
+}
+

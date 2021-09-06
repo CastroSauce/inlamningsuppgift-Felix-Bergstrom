@@ -22,14 +22,14 @@ namespace inlämningsuppgift.Services.Product
             return await _dbContext.products.AsNoTracking().Include(product => product.image).Select(product => new ProductViewModel {image = product.image, location = product.location, Name = product.Name, description = product.description, Id = product.Id, price = product.price }).ToListAsync();
         }
 
-        public async Task<List<ProductViewModel>> GetAllOnHomepage()
+        public async Task<List<ProductViewModel>> GetAllOnHomepageAsync()
         {
             return await _dbContext.products.AsNoTracking().Include(product => product.image)
                 .Where(product => product.onHomepage == true)
                 .Select(product => new ProductViewModel { image = product.image, location = product.location, Name = product.Name, description = product.description, Id = product.Id, price = product.price }).ToListAsync();
         }
 
-        public async Task<List<ProductViewModel>> GetSpecificProducts(int? catagoryId, string? query)
+        public async Task<List<ProductViewModel>> GetSpecificProductsAsync(int? catagoryId, string? query)
         {
             var request = _dbContext.products.AsNoTracking();
 
