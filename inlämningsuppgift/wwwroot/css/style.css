@@ -3,6 +3,11 @@
 * Trunk version 2.0.0
 */
 /** @group Base */
+
+.page{
+	min-height:100vh;
+}
+
 a:focus,
 button:focus {
 	outline: none !important;

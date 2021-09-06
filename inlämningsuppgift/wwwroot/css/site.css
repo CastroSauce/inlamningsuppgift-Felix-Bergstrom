@@ -3,6 +3,7 @@ for details on configuring this project to bundle and minify static web assets. 
 
 * {
     --main-dark-color: #162e44;
+    --main-green-color: #01b3a7;
 }
 
 .grid-gap-40{
@@ -24,6 +25,10 @@ html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {
     display: block;
 }
 
+.nav-link{
+    font-size:16px;
+    font-weight:500;
+}
 
 .image-fit {
     object-fit: cover;

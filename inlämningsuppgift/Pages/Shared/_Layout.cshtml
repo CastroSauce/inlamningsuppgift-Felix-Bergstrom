@@ -51,26 +51,21 @@
                         <div class="rd-navbar-main">
                             <div class="rd-navbar-nav-wrap">
 
-                                <form method="get" action="/TourPage/Tour" class="col-md-12 col-lg-4">
-                                    <div class="input-group rd-navbar-nav">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-outline-secondary" type="submit">Sök</button>
-                                        </div>
-                                        <input type="text" class="form-control" name="query">
-                                    </div>
-                                </form>
 
-                                <ul class="list-inline list-inline-md rd-navbar-corporate-list-social col-md-12 col-lg-4">
-                                    <li><a class="icon fa fa-facebook" href="#"></a></li>
-                                    <li><a class="icon fa fa-twitter" href="#"></a></li>
-                                    <li><a class="icon fa fa-google-plus" href="#"></a></li>
-                                    <li><a class="icon fa fa-instagram" href="#"></a></li>
-                                </ul>
+                                <div class="col-md-12  col-lg-5 p-4">
+                                    <form method="get" action="/TourPage/Tour">
+                                        <partial name="_SearchfieldPartial" />
+                                    </form>
+                                </div>
 
+
+                                <div class="rd-navbar-aside-right col-lg-3">
+                                    <partial name="_LoginPartial"/>
+                                </div>
 
 
                                 <!-- RD Navbar Nav-->
-                                <ul class="rd-navbar-nav col-md-12 col-lg-4">
+                                <ul class="rd-navbar-nav col-md-12 col-lg-4 m-0">
                                     <li class="rd-nav-item active">
                                         <a class="rd-nav-link" asp-page="/index">Home</a>
                                     </li>
