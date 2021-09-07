@@ -9,5 +9,7 @@ namespace inlämningsuppgift.Services.image
     {
         public string GetDefaultImageUrl();
         public string GetDefaultImageAltText();
+
+        //TODO: implement image upload
     }
 }

@@ -90,16 +90,16 @@ namespace inlämningsuppgift.Models
         {
 
             if(!dbContext.catagories.Any(x => x.Name == "Balloon flights"))
-                dbContext.Add(new Catagory { onHomepage = true, Name = "Balloon flights" });
+                dbContext.Add(new Catagory {image = new image { url = "/images/balloon.jpg" }, onHomepage = true, Name = "Balloon flights" });
 
             if (!dbContext.catagories.Any(x => x.Name == "Train adventures"))
-                dbContext.Add(new Catagory { onHomepage = true, Name = "Train adventures" });
+                dbContext.Add(new Catagory { image = new image { url = "/images/train.jpg" }, onHomepage = true, Name = "Train adventures" });
 
             if (!dbContext.catagories.Any(x => x.Name == "Sailing trips"))
-                dbContext.Add(new Catagory { onHomepage = true, Name = "Sailing trips" });
+                dbContext.Add(new Catagory { image = new image { url = "/images/boat.jpg" }, onHomepage = true, Name = "Sailing trips" });
 
             if (!dbContext.catagories.Any(x => x.Name == "Biking experiences"))
-                dbContext.Add(new Catagory { Name = "Biking experiences" });
+                dbContext.Add(new Catagory { image = new image { url = "/images/biking.jpg" }, Name = "Biking experiences" });
 
             dbContext.SaveChanges();
         }
@@ -129,7 +129,7 @@ namespace inlämningsuppgift.Models
 
 
             if (!dbContext.products.Any(x => x.Name == "The Flam Railway"))
-                dbContext.Add(new Product { Name = "The Flam Railway",image = new image { url = "/images/shrek.jpg"} , location = Countries.France, catagory = trainTrip, price = 32213, description = "Feel like you're on top of the world - literally - at the start of the 310-mile railway running from Oslo to Bergen in Norway - the highest major train route in Northern Europe. The journey from the mountain station of Myrdal down to Flam deep in the fjord has been voted one of the most scenic rail journeys in the world, and is also one of the steepest normal track railway lines, dropping 2,824 feet to the fjord below in just under an hour. Take in the awe-inspiring views of rugged mountains, deep valleys, and thundering waterfalls as you descend into the Aurlandsfjord." });
+                dbContext.Add(new Product { Name = "The Flam Railway" , location = Countries.France, catagory = trainTrip, price = 32213, description = "Feel like you're on top of the world - literally - at the start of the 310-mile railway running from Oslo to Bergen in Norway - the highest major train route in Northern Europe. The journey from the mountain station of Myrdal down to Flam deep in the fjord has been voted one of the most scenic rail journeys in the world, and is also one of the steepest normal track railway lines, dropping 2,824 feet to the fjord below in just under an hour. Take in the awe-inspiring views of rugged mountains, deep valleys, and thundering waterfalls as you descend into the Aurlandsfjord." });
 
             if (!dbContext.products.Any(x => x.Name == "Venice Simplon-Orient-Express"))
                 dbContext.Add(new Product { Name = "Venice Simplon-Orient-Express", location = Countries.Italy, catagory = trainTrip, price = 6444, description = "The iconic Venice Simplon-Orient Express is synonymous with everything that is 'luxury rail travel,' including glamour and sophistication, impeccable service, and iconic journeys that hearken back to a different time when rail travel was the epitome of style and class. Experience pure comfort, opulent interiors, fine dining, and convivial company along the tracks as you relive the 'golden age of rail travel' on this unforgettable journey to/from London to Paris and/or Venice, Florence, Rome and Verona!" });
