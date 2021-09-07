@@ -6,6 +6,15 @@ for details on configuring this project to bundle and minify static web assets. 
     --main-green-color: #01b3a7;
 }
 
+.fas{
+    font-style:normal
+}
+
+.cursor-pointer:hover{
+    cursor:pointer !important;
+}
+
+
 .grid-gap-40{
     grid-gap:40px !important;
 }

@@ -1,0 +1,24 @@
+﻿@page
+@model inlämningsuppgift.Pages.ProductPage.ProductsDetailsModel
+
+
+<div class="container">
+
+    <image class="heroImage p-4" image-model="@Model.product.image" />
+
+    <div class="text-left p-4">
+        <h3 class=""><strongs>@Model.product.Name</strongs></h3>
+        <h5><img class="icon" src="~/icons/pin.png" /> @Model.product.location, @Model.product.catagoryName</h5>
+        <div class="product-big-rating"><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star_half"></span></div><a class="product-big-reviews" href="#">4 customer reviews</a>
+
+    </div>
+
+
+    <div class="p-4 text-left">
+        <h4>Description</h4>
+        <p>@Model.product.description</p>
+    </div>
+
+</div>
+
+<link href="~/css/Product/productDetails.css" rel="stylesheet" />

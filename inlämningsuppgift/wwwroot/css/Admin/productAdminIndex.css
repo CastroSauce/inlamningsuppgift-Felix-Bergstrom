@@ -1,0 +1,35 @@
+﻿.del-btn{
+    color:orangered;
+    font-size:30px;
+}
+
+.edit-btn{
+    color:var(--main-green-color);
+    font-size:30px;
+}
+
+.productName{
+    text-align:start;
+}
+
+.refresh-btn{
+    width:40px;
+    height:40px;
+    background-color:var(--main-green-color);
+    border:none;
+    border-radius:25px;
+    transition: all .2s;
+    cursor:pointer;
+}
+
+    .refresh-btn:hover {
+        background-color: #04ccbe;
+    }
+
+    .refresh-btn i {
+        color: white;
+        position: relative;
+        top: 2px;
+        right: 12px;
+        font-size: 25px;
+    }

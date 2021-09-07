@@ -1,0 +1,55 @@
+﻿@page
+@using enums
+@model inlämningsuppgift.Pages.TourPage.TourModel
+
+
+<section class="section section-sm bg-default">
+    <div class="container">
+        
+        <div class="row flex-column">
+            <h2>Tours</h2>
+
+            @if (Model.query != null)
+            {
+                <h4>Result for "@Model.query"</h4>
+            }
+
+        </div>
+        
+
+    <div>
+        <form id="orderForm">
+
+            <input asp-for="query" />
+
+            <div class=" col-6 form-group d-flex">
+                <label class="float-left col-3 mb-auto mt-auto">Price Order</label>
+                <select id="priceOrder" class="form-control col-3" asp-for="order" asp-items="@Model.priceOrderList"></select>
+            </div>
+        </form>
+    </div>
+
+
+        <hr />
+        <div class="row row-sm row-40 row-md-50 justify-content-center">
+
+
+            @if (Model.products.Count == 0)
+            {
+                <span>No results found</span>
+            }
+
+            @foreach (var product in Model.products)
+            {
+                <partial name="../Shared/_ProductPartial.cshtml" model="product" />
+            }
+
+        </div>
+    </div>
+
+</section>
+
+@section Scripts
+{ 
+    <script src="~/js/Product/Product.js" defer></script>
+}

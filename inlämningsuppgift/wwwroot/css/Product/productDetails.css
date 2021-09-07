@@ -1,0 +1,11 @@
+﻿
+.heroImage{
+
+    height:300px;
+    width:100%;
+    object-fit:cover;
+}
+
+.text-left{
+    text-align:left;
+}

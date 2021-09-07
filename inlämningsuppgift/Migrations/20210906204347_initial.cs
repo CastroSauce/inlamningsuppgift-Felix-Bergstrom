@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace inlämningsuppgift.Migrations
 {
-    public partial class what : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,6 +44,20 @@ namespace inlämningsuppgift.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "images",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    url = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    altText = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_images", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -152,6 +166,58 @@ namespace inlämningsuppgift.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "catagories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    onHomepage = table.Column<bool>(type: "bit", nullable: false),
+                    imageId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_catagories", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_catagories_images_imageId",
+                        column: x => x.imageId,
+                        principalTable: "images",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "products",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    price = table.Column<float>(type: "real", nullable: false),
+                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    imageId = table.Column<int>(type: "int", nullable: true),
+                    onHomepage = table.Column<bool>(type: "bit", nullable: false),
+                    catagoryId = table.Column<int>(type: "int", nullable: true),
+                    location = table.Column<string>(type: "nvarchar(24)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_products_catagories_catagoryId",
+                        column: x => x.catagoryId,
+                        principalTable: "catagories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_products_images_imageId",
+                        column: x => x.imageId,
+                        principalTable: "images",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -190,6 +256,21 @@ namespace inlämningsuppgift.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_catagories_imageId",
+                table: "catagories",
+                column: "imageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_products_catagoryId",
+                table: "products",
+                column: "catagoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_products_imageId",
+                table: "products",
+                column: "imageId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -210,10 +291,19 @@ namespace inlämningsuppgift.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "products");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "catagories");
+
+            migrationBuilder.DropTable(
+                name: "images");
         }
     }
 }

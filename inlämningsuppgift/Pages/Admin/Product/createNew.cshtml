@@ -1,0 +1,60 @@
+﻿@page
+@model inlämningsuppgift.Pages.Admin.Product.createNewModel
+
+    <div class="container p-4">
+        <form method="post">
+            
+
+            <div class="form-row">
+                <div class="form-group col-9">
+                    <label class="float-left" asp-for="product.Name">Name</label>
+                    <input class="form-control" asp-for="product.Name">
+                    <span asp-validation-for="product.Name" class="field-validation-error"></span>
+                </div>
+
+                <div class="form-group col-3">
+                    <label class="float-left" asp-for="product.price">Price</label>
+                    <input class="form-control" asp-for="product.price">
+                    <span asp-validation-for="product.price" class="field-validation-error"></span>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class=" col-6 form-group">
+                    <label class="float-left" asp-for="product.location">Location</label>
+                    <select class="form-control" asp-for="product.location" asp-items="@Model.countryList"></select>
+                    <span asp-validation-for="product.location" class="field-validation-error"></span>
+                </div>
+
+                <div class=" col-6 form-group">
+                    <label class="float-left" asp-for="catagoryName">Catagory</label>
+                    <select class="form-control" asp-for="catagoryName" asp-items="@Model.catagoryNameList"></select>
+                    <span asp-validation-for="catagoryName" class="field-validation-error"></span>
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <label class="float-left" asp-for="product.description">Description</label>
+                <textarea asp-for="product.description" class="form-control"></textarea>
+                <span asp-validation-for="product.description" class="field-validation-error"></span>
+            </div>
+
+            <div class="form-row form-group d-flex">
+                <label asp-for="product.onHomepage">On homepage</label>
+                <input class="mt-auto mb-auto ml-2" asp-for="product.onHomepage"/>
+                <span asp-validation-for="product.onHomepage" class="field-validation-error"></span>
+            </div>
+
+
+            <div class="form-row form-group">
+                <div class=" col-6">
+                    <button type="submit" class="form-control btn btn-primary">Spara</button>
+                </div>
+                <div class=" col-6">
+                    <a class="btn btn-info col-12" asp-page="/Admin/Product/ProductAdminIndex">Avbryt</a>
+                </div>
+            </div>
+        </form>
+    </div>
+

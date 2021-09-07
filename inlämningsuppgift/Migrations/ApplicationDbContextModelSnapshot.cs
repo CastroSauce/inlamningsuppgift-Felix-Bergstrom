@@ -261,8 +261,9 @@ namespace inlämningsuppgift.Migrations
                     b.Property<int?>("imageId")
                         .HasColumnType("int");
 
-                    b.Property<int>("location")
-                        .HasColumnType("int");
+                    b.Property<string>("location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(24)");
 
                     b.Property<bool>("onHomepage")
                         .HasColumnType("bit");

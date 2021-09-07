@@ -1,9 +1,11 @@
-﻿using inlämningsuppgift.Models;
+﻿using inlämningsuppgift.enums;
+using inlämningsuppgift.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static inlämningsuppgift.Pages.Admin.Product.createNewModel;
 
 namespace inlämningsuppgift.Services.Product
 {
@@ -19,25 +21,147 @@ namespace inlämningsuppgift.Services.Product
 
         public async Task<List<ProductViewModel>> GetAllProductsAsync()
         {
-            return await _dbContext.products.AsNoTracking().Include(product => product.image).Select(product => new ProductViewModel {image = product.image, location = product.location, Name = product.Name, description = product.description, Id = product.Id, price = product.price }).ToListAsync();
+            return await _dbContext.products.AsNoTracking().Include(product => product.image).Select(product => new ProductViewModel
+            {
+                catagoryName = product.catagory.Name,
+                image = product.image,
+                location = product.location,
+                Name = product.Name,
+                description = product.description,
+                Id = product.Id,
+                price = product.price
+            }).ToListAsync();
         }
 
         public async Task<List<ProductViewModel>> GetAllOnHomepageAsync()
         {
             return await _dbContext.products.AsNoTracking().Include(product => product.image)
                 .Where(product => product.onHomepage == true)
-                .Select(product => new ProductViewModel { image = product.image, location = product.location, Name = product.Name, description = product.description, Id = product.Id, price = product.price }).ToListAsync();
+                .Select(product => new ProductViewModel
+                {
+                    catagoryName = product.catagory.Name,
+                    image = product.image,
+                    location = product.location,
+                    Name = product.Name,
+                    description = product.description,
+                    Id = product.Id,
+                    price = product.price
+                }).ToListAsync();
         }
 
-        public async Task<List<ProductViewModel>> GetSpecificProductsAsync(int? catagoryId, string? query)
+        public async Task<List<ProductViewModel>> GetSpecificProductsAsync(int? catagoryId, string? query, priceOrder? priceOrder)
         {
             var request = _dbContext.products.AsNoTracking();
 
-            if(catagoryId != null) {request = request.Where(product => product.catagory.Id == catagoryId); }
+            if (catagoryId != null) { request = request.Where(product => product.catagory.Id == catagoryId); }
 
-            if (query != null) { request = request.Where(product => product.Name.Contains(query) ); }; 
+            if (query != null) { request = request.Where(product => product.Name.Contains(query) || ((string)(object)product.location).Contains(query)); };
 
-            return await request.Select(product => new ProductViewModel { image = product.image, location = product.location, Name = product.Name, description = product.description, Id = product.Id, price = product.price }).ToListAsync();
+            if (priceOrder != null)
+            {
+                switch (priceOrder)
+                {
+                    case enums.priceOrder.Highest:
+                        request = request.OrderByDescending(x => x.price);
+                        break;
+
+                    case enums.priceOrder.Lowest:
+                        request = request.OrderBy(x => x.price);
+                        break;
+                }
+            }
+            return await request.Select(product => new ProductViewModel
+            {
+                catagoryName = product.catagory.Name,
+                image = product.image,
+                location = product.location,
+                Name = product.Name,
+                description = product.description,
+                Id = product.Id,
+                price = product.price
+            }).ToListAsync();
         }
+
+
+        public async Task<List<AdminProductViewModel>> GetProductsAdminAsync(string? query)
+        {
+            var request = _dbContext.products.AsNoTracking();
+            if (query != null) { request = request.Where(product => product.Name.Contains(query)); };
+            return await request.Select(product => new AdminProductViewModel { Name = product.Name, id = product.Id }).ToListAsync();
+        }
+
+
+        public async Task SaveNewProduct(productDataModel product)
+        {
+            var enity = new Models.Product
+            {
+                Name = product.Name,
+                description = product.description,
+                image = product.image,
+                location = product.location,
+                onHomepage = product.onHomepage,
+                price = product.price,
+                catagory = product.catagory
+            };
+            _dbContext.Add(enity);
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task UpdateProduct(productDataModel product)
+        {
+            var entity = _dbContext.products.Find(product.id);
+
+            entity.image = product.image;
+            entity.Name = product.Name;
+            entity.catagory = product.catagory;
+            entity.description = product.description;
+            entity.onHomepage = product.onHomepage;
+            entity.location = product.location;
+            entity.price = product.price;
+
+            await _dbContext.SaveChangesAsync();
+        }
+
+
+        public async Task DeleteProductByIdAsync(int id)
+        {
+            var entity = await _dbContext.products.FindAsync(id);
+            _dbContext.Remove(entity);
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<productDataModel> GetProductById(int id)
+        {
+            return await _dbContext.products.AsNoTracking().Include(x => x.catagory).Include(x => x.image)
+                .Where(product => product.Id == id)
+                .Select(x => new productDataModel
+                {
+                    id = x.Id,
+                    Name = x.Name,
+                    catagory = x.catagory,
+                    description = x.description,
+                    image = x.image,
+                    location = x.location,
+                    onHomepage = x.onHomepage,
+                    price = x.price
+                }).FirstAsync();
+        }
+
+         public async Task<ProductViewModel> GetProductViewById(int id)
+        {
+            return await _dbContext.products.AsNoTracking().Include(product => product.image)
+                .Where(product => product.Id == id)
+                .Select(product => new ProductViewModel
+            {
+                catagoryName = product.catagory.Name,
+                image = product.image,
+                location = product.location,
+                Name = product.Name,
+                description = product.description,
+                Id = product.Id,
+                price = product.price
+            }).FirstOrDefaultAsync();
+        }
+
     }
 }

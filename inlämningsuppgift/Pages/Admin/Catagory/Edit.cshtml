@@ -1,0 +1,31 @@
+﻿@page
+@model inlämningsuppgift.Pages.Admin.Catagory.EditModel
+
+<div class="container p-4">
+    <form method="post">
+        <input  asp-for="catagory.id"/>
+
+        <div class="form-row">
+            <div class="form-group col-9">
+                <label class="float-left" asp-for="catagory.name">Name</label>
+                <input class="form-control" asp-for="catagory.name">
+                <span asp-validation-for="catagory.name" class="field-validation-error"></span>
+            </div>
+        </div>
+
+        <div class="form-row form-group d-flex">
+            <label asp-for="catagory.onHomepage">On homepage</label>
+            <input class="mt-auto mb-auto ml-2" asp-for="catagory.onHomepage" />
+            <span asp-validation-for="catagory.onHomepage" class="field-validation-error"></span>
+        </div>
+
+        <div class="form-row form-group">
+            <div class=" col-6">
+                <button type="submit" class="form-control btn btn-primary">Spara</button>
+            </div>
+            <div class=" col-6">
+                <a class="btn btn-info col-12" asp-page="/Admin/Catagory/CatagoryAdminIndex">Avbryt</a>
+            </div>
+        </div>
+    </form>
+</div>

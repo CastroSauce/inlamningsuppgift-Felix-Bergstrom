@@ -9,11 +9,11 @@
             <div class="unit-body">
                 <div class="product-big-body">
                     <h5 class="product-big-title"><a href="#">@Model.Name</a></h5>
-                    <span><img class="icon" src="~/icons/pin.png" /> @Model.location</span>
+                    <span><img class="icon" src="~/icons/pin.png" /> @Model.location, @Model.catagoryName</span>
                     <div class="group-sm group-middle justify-content-start">
                         <div class="product-big-rating"><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star_half"></span></div><a class="product-big-reviews" href="#">4 customer reviews</a>
                     </div>
-                    <p class="product-big-text">@Model.description</p><a class="button button-black-outline button-ujarak" href="#">Buy This Tour</a>
+                    <p class="product-big-text">@Model.description</p><a class="button button-black-outline button-ujarak" asp-page="/ProductPage/ProductDetails" asp-route-id="@Model.Id">Read more</a>
                     <div class="product-big-price-wrap"><span class="product-big-price">@Model.price.ToString("c")</span></div>
                 </div>
             </div>

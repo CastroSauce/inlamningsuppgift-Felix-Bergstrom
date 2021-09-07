@@ -10,8 +10,8 @@ using inlämningsuppgift.Models;
 namespace inlämningsuppgift.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210903123654_added image table and properties")]
-    partial class addedimagetableandproperties
+    [Migration("20210906204347_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -234,6 +234,9 @@ namespace inlämningsuppgift.Migrations
                     b.Property<int?>("imageId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("onHomepage")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.HasIndex("imageId");
@@ -260,8 +263,12 @@ namespace inlämningsuppgift.Migrations
                     b.Property<int?>("imageId")
                         .HasColumnType("int");
 
-                    b.Property<int>("location")
-                        .HasColumnType("int");
+                    b.Property<string>("location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(24)");
+
+                    b.Property<bool>("onHomepage")
+                        .HasColumnType("bit");
 
                     b.Property<float>("price")
                         .HasColumnType("real");
@@ -286,7 +293,7 @@ namespace inlämningsuppgift.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("imageUrl")
+                    b.Property<string>("url")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
