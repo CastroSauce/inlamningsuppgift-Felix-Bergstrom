@@ -12,7 +12,7 @@ namespace inlämningsuppgift.Services.Product
     {
        abstract public Task<List<ProductViewModel>> GetAllProductsAsync();
        abstract public Task<List<ProductViewModel>> GetAllOnHomepageAsync();
-       abstract public Task<List<ProductViewModel>> GetSpecificProductsAsync(int? catagoryId, string? query, priceOrder? priceOrder);
+       abstract public Task<ProductPageDataModel> GetSpecificProductsAsync(int? catagoryId, string? query, priceOrder? priceOrder, int page = 0);
        abstract public Task<productDataModel> GetProductById(int id);
        abstract public Task<ProductViewModel> GetProductViewById(int id);
        abstract public Task<List<AdminProductViewModel>> GetProductsAdminAsync(string? query);

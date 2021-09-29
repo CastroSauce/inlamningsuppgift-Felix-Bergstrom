@@ -49,9 +49,11 @@ namespace inlämningsuppgift.Services.Product
                 }).ToListAsync();
         }
 
-        public async Task<List<ProductViewModel>> GetSpecificProductsAsync(int? catagoryId, string? query, priceOrder? priceOrder)
+        public async Task<ProductPageDataModel> GetSpecificProductsAsync(int? catagoryId, string? query, priceOrder? priceOrder, int page = 0)
         {
             var request = _dbContext.products.AsNoTracking();
+
+            var productPage = new ProductPageDataModel();
 
             if (catagoryId != null) { request = request.Where(product => product.catagory.Id == catagoryId); }
 
@@ -70,7 +72,13 @@ namespace inlämningsuppgift.Services.Product
                         break;
                 }
             }
-            return await request.Select(product => new ProductViewModel
+
+                productPage.possibleResults = request.Count();
+
+
+                request = request.Skip(page * 3).Take(3);
+
+               productPage.products =  await request.Select(product => new ProductViewModel
             {
                 catagoryName = product.catagory.Name,
                 image = product.image,
@@ -80,6 +88,8 @@ namespace inlämningsuppgift.Services.Product
                 Id = product.Id,
                 price = product.price
             }).ToListAsync();
+
+            return productPage;
         }
 
 

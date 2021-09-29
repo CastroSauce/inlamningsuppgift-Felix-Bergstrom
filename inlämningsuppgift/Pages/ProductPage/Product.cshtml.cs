@@ -9,6 +9,7 @@ using inlämningsuppgift.Services.Product;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace inlämningsuppgift.Pages.TourPage
 {
@@ -27,19 +28,37 @@ namespace inlämningsuppgift.Pages.TourPage
 
         public List<ProductViewModel> products{ get; set; }
 
+        public int numOfPages { get; set; }
+
         public TourModel(IProductService productService)
         {
             _productService = productService;
         }
 
 
+
+        public async Task<PartialViewResult> OnGetProductList(int pagenum, string? query, priceOrder order, int? catagoryId)
+        {
+
+            var prod = await _productService.GetSpecificProductsAsync(catagoryId, query, order, pagenum);
+
+            return new PartialViewResult
+            {
+                ViewName = "../Shared/_MultipleProductPartial",
+                ViewData = new ViewDataDictionary<List<ProductViewModel>>(ViewData, prod.products)
+            };
+        }
+
         public async Task OnGet(int? catagoryId, string? query, priceOrder order)
         {
 
             priceOrderList = htmlHelperFunctions.GenerateSelectList(enumHelper.GetpriceOrderStringList(),false);
 
-            products = await _productService.GetSpecificProductsAsync(catagoryId, query, order);
+            var page = await _productService.GetSpecificProductsAsync(catagoryId, query, order);
 
+            products = page.products;
+
+            numOfPages =  (int)Math.Round((decimal)(page.possibleResults / 3));
         }
     }
 }

@@ -20,9 +20,18 @@ for details on configuring this project to bundle and minify static web assets. 
     cursor:pointer !important;
 }
 
+.page-link{
 
-.grid-gap-40{
-    grid-gap:40px !important;
+    border-radius:5px !important;
+
+}
+
+.catagoryImage {
+    height: 400px;
+}
+
+.grid-gap-40 {
+    grid-gap: 40px !important;
 }
 
 .ie-panel {

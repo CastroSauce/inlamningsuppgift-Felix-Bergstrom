@@ -2,10 +2,11 @@
 @using enums
 @model inlämningsuppgift.Pages.TourPage.TourModel
 
+    <input type="hidden" value="@Model.query" id="query"/>
 
 <section class="section section-sm bg-default">
     <div class="container">
-        
+
         <div class="row flex-column">
             <h2>Tours</h2>
 
@@ -15,23 +16,23 @@
             }
 
         </div>
-        
 
-    <div>
-        <form id="orderForm">
 
-            <input asp-for="query" />
+        <div>
+            <form id="orderForm">
 
-            <div class=" col-6 form-group d-flex">
-                <label class="float-left col-3 mb-auto mt-auto">Price Order</label>
-                <select id="priceOrder" class="form-control col-3" asp-for="order" asp-items="@Model.priceOrderList"></select>
-            </div>
-        </form>
-    </div>
+                <input asp-for="query" />
+
+                <div class=" col-6 form-group d-flex">
+                    <label class="float-left col-3 mb-auto mt-auto">Price Order</label>
+                    <select id="priceOrder" class="form-control col-3" asp-for="order" asp-items="@Model.priceOrderList"></select>
+                </div>
+            </form>
+        </div>
 
 
         <hr />
-        <div class="row row-sm row-40 row-md-50 justify-content-center">
+        <div class="row row-sm row-40 row-md-50 justify-content-center" id="products-container">
 
 
             @if (Model.products.Count == 0)
@@ -43,6 +44,19 @@
             {
                 <partial name="../Shared/_ProductPartial.cshtml" model="product" />
             }
+
+        </div>
+        <div class="row">
+            <ul class="pagination col-12">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+
+                @for(int i = 0; i < Model.numOfPages; i++)
+                {
+                <li class="page-item @(i == 0 ? "active" : " ")"><button class="page-link" value="@i">@i</button></li>
+                }
+
+                <li class="page-item"><button class="page-link" >Next</button></li>
+            </ul>
 
         </div>
     </div>

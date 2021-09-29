@@ -1,0 +1,8 @@
+﻿@model List<inlämningsuppgift.Models.ProductViewModel>
+
+
+
+@foreach (var item in Model)
+{
+    <partial name="_ProductPartial" model="item"/>
+}
