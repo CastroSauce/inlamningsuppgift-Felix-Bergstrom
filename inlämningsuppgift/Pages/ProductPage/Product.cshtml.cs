@@ -20,9 +20,12 @@ namespace inlämningsuppgift.Pages.TourPage
         private IProductService _productService { get; set; }
 
         [HiddenInput]
-        public string? query { get; set; }
 
-        public priceOrder? order { get; set; }
+        public int? CatagoryId { get; set; }
+        [HiddenInput]
+        public string? Query { get; set; }
+
+        public priceOrder? Order { get; set; }
 
         public List<SelectListItem> priceOrderList { get; set; }
 
@@ -58,7 +61,14 @@ namespace inlämningsuppgift.Pages.TourPage
 
             products = page.products;
 
-            numOfPages =  (int)Math.Round((decimal)(page.possibleResults / 3));
+            Query = query;
+
+            Order = order;
+
+            CatagoryId = catagoryId;
+
+
+            numOfPages =  (int)Math.Ceiling((decimal)page.possibleResults / 3);
         }
     }
 }
