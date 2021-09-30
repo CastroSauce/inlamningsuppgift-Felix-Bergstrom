@@ -33,6 +33,19 @@
 
 
         <hr />
+        <div class="row">
+            <ul class="pagination col-12">
+                <li class="page-item page-back"><a class="page-link" href="#">Previous</a></li>
+
+                @for (int i = 0; i < Model.numOfPages; i++)
+                {
+                    <li class="page-item pagenum @(i == 0 ? "active" : " ")"><button class="page-link" value="@i">@i</button></li>
+                }
+
+                <li class="page-item page-forward"><button class="page-link">Next</button></li>
+            </ul>
+
+        </div>
         <div class="row row-sm row-40 row-md-50 justify-content-center" id="products-container">
 
 
@@ -47,19 +60,7 @@
             }
 
         </div>
-        <div class="row">
-            <ul class="pagination col-12">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
 
-                @for(int i = 0; i < Model.numOfPages; i++)
-                {
-                <li class="page-item @(i == 0 ? "active" : " ")"><button class="page-link" value="@i">@i</button></li>
-                }
-
-                <li class="page-item"><button class="page-link" >Next</button></li>
-            </ul>
-
-        </div>
     </div>
 
 </section>
